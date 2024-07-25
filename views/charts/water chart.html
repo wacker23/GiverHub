@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Chart</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 100%;
+      height: 80vh; /* 80% of the viewport height */
+      min-height: 400px; /* Minimum height to ensure chart visibility */
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    h2 {
+      margin: 0;
+      padding-bottom: 20px;
+    }
+  </style>
+  <!-- Include Highcharts library -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Water Chart</h2>
+    <div id="container"></div>
+  </div>
+    
+  <script>
+    function Chart2() {
+      Highcharts.chart('container', {
+        chart: {
+          type: 'packedbubble',
+          height: '100%'
+        },
+        title: {
+          text: 'Water Stress by Country (2019)',
+          align: 'left'
+        },
+        tooltip: {
+          useHTML: true,
+          pointFormat: '<b>{point.name}:</b> {point.value}'
+        },
+        plotOptions: {
+          packedbubble: {
+            minSize: '20%',
+            maxSize: '100%',
+            zMin: 0,
+            zMax: 5,
+            layoutAlgorithm: {
+              gravitationalConstant: 0.05,
+              splitSeries: true,
+              seriesInteraction: false,
+              dragBetweenSeries: true,
+              parentNodeLimit: true
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+              filter: {
+                property: 'y',
+                operator: '>',
+                value: 0.5
+              },
+              style: {
+                color: 'black',
+                textOutline: 'none',
+                fontWeight: 'normal'
+              }
+            }
+          }
+        },
+        series: [
+          {
+            name: 'Europe',
+            data: [
+              { name: 'Russia', value: 1.22 },
+              { name: 'Germany', value: 2.14 },
+              { name: 'United Kingdom', value: 1.4 },
+              { name: 'France', value: 2.19 },
+              { name: 'Italy', value: 3.01 },
+              { name: 'Poland', value: 1.48 },
+              { name: 'Ukraine', value: 1.49 },
+              { name: 'Spain', value: 3.74 },
+              { name: 'Netherlands', value: 1.61 },
+              { name: 'Romania', value: 1.85 },
+              { name: 'Belgium', value: 3.89 },
+              { name: 'Sweden', value: 0.44 },
+              { name: 'Czech Republic', value: 1.29 },
+              { name: 'Portugal', value: 3.14 },
+              { name: 'Hungary', value: 0.77 },
+              { name: 'Belarus', value: 0.75 },
+              { name: 'Austria', value: 0.27 },
+              { name: 'Switzerland', value: 0.8 },
+              { name: 'Serbia', value: 0.83 },
+              { name: 'Bulgaria', value: 2.53 },
+              { name: 'Slovakia', value: 0.5 },
+              { name: 'Finland', value: 0.54 },
+              { name: 'Greece', value: 3.8 },
+              { name: 'Albania', value: 3.53 },
+              { name: 'Armenia', value: 3.43 },
+              { name: 'Lithuania', value: 1.59 },
+              { name: 'Latvia', value: 0.38 },
+              { name: 'Estonia', value: 2.26 },
+              { name: 'Cyprus', value: 3.97 },
+              { name: 'Luxembourg', value: 2.86 },
+              { name: 'Montenegro', value: 0.58 },
+              { name: 'Andorra', value: 3.92 },
+              { name: 'Liechtenstein', value: 0.99 },
+              { name: 'San Marino', value: 4.14 }
+            ]
+          },
+          {
+            name: 'Oceania',
+            data: [
+              { name: 'Australia', value: 2.67 },
+              { name: 'New Zealand', value: 0.05 }
+            ]
+          },
+          {
+            name: 'South America',
+            data: [
+              { name: 'Brazil', value: 0.78 },
+              { name: 'Argentina', value: 1.31 },
+              { name: 'Colombia', value: 0.65 },
+              { name: 'Chile', value: 3.98 },
+              { name: 'Peru', value: 2.05 },
+              { name: 'Venezuela', value: 2.03 },
+              { name: 'Paraguay', value: 0.01 },
+              { name: 'Uruguay', value: null }
+            ]
+          },
+          {
+            name: 'Asia',
+            data: [
+              { name: 'India', value: 4.12 },
+              { name: 'China', value: 2.4 },
+              { name: 'Indonesia', value: 2.07 },
+              { name: 'Pakistan', value: 4.05 },
+              { name: 'Bangladesh', value: 0.43 },
+              { name: 'Japan', value: 1.66 },
+              { name: 'Philippines', value: 1.55 },
+              { name: 'Vietnam', value: 0.94 },
+              { name: 'Iran', value: 4.57 },
+              { name: 'Turkey', value: 3.56 },
+              { name: 'Saudi Arabia', value: 4.35 },
+              { name: 'Uzbekistan', value: 3.82 },
+              { name: 'Yemen', value: 3.97 },
+              { name: 'Malaysia', value: 0.28 },
+              { name: 'Nepal', value: 3.17 },
+              { name: 'Kazakhstan', value: 2.16 },
+              { name: 'South Korea', value: 2.55 },
+              { name: 'North Korea', value: 1.95 },
+              { name: 'Syria', value: 3.64 },
+              { name: 'Afghanistan', value: 3.8 },
+              { name: 'Jordan', value: 4.56 },
+              { name: 'United Arab Emirates', value: 4.26 },
+              { name: 'Israel', value: 4.82 },
+              { name: 'Iraq', value: 3.13 },
+              { name: 'Qatar', value: 4.97 },
+              { name: 'Singapore', value: null },
+              { name: 'Oman', value: 4.04 },
+              { name: 'Lebanon', value: 4.82 },
+              { name: 'Kuwait', value: 4.43 },
+              { name: 'Sri Lanka', value: 1.66 },
+              { name: 'Myanmar', value: 0.65 },
+              { name: 'Laos', value: 0.03 },
+              { name: 'Cambodia', value: 0.42 },
+              { name: 'Thailand', value: 2.98 },
+              { name: 'Georgia', value: 1.39 },
+              { name: 'Azerbaijan', value: 2.94 },
+              { name: 'Tajikistan', value: 2.65 },
+              { name: 'Kyrgyzstan', value: 3.31 },
+              { name: 'Mongolia', value: 2.51 }
+            ]
+          },
+          {
+            name: 'Africa',
+            data: [
+              { name: 'Nigeria', value: 1.39 },
+              { name: 'Ethiopia', value: 1.11 },
+              { name: 'DR Congo', value: 0.04 },
+              { name: 'Egypt', value: 3.07 },
+              { name: 'South Africa', value: 2.89 },
+              { name: 'Kenya', value: 0.93 },
+              { name: 'Uganda', value: 0.26 },
+              { name: 'Sudan', value: 2.92 },
+              { name: 'Algeria', value: 3.69 },
+              { name: 'Tanzania', value: 1.63 },
+              { name: 'Morocco', value: 3.89 },
+              { name: 'Angola', value: 1.66 },
+              { name: 'Mozambique', value: 0.98 },
+              { name: 'Ghana', value: 0.75 },
+              { name: 'Madagascar', value: 0.69 },
+              { name: 'Ivory Coast', value: 0.04 },
+              { name: 'Cameroon', value: 0.04 },
+              { name: 'Niger', value: 3.28 },
+              { name: 'Mali', value: 0.55 },
+              { name: 'Burkina Faso', value: 3.42 },
+              { name: 'Zimbabwe', value: 1.79 },
+              { name: 'Rwanda', value: 0.99 },
+              { name: 'Benin', value: 0.18 },
+              { name: 'Burundi', value: 0.42 },
+              { name: 'Guinea', value: 0.19 },
+              { name: 'Somalia', value: 1.01 },
+              { name: 'Botswana', value: 4.02 },
+              { name: 'Lesotho', value: 2.13 },
+              { name: 'Guinea-Bissau', value: 0.98 },
+              { name: 'Djibouti', value: 3.37 },
+              { name: 'Eritrea', value: 4.33 },
+              { name: 'Malawi', value: 0.56 },
+              { name: 'Zambia', value: 0.81 },
+              { name: 'Namibia', value: 3.31 },
+              { name: 'South Sudan', value: 1.52 },
+              { name: 'Gambia', value: 0.04 },
+              { name: 'Central African Republic', value: 0.03 },
+              { name: 'Sierra Leone', value: 0.01 },
+              { name: 'Swaziland (Eswatini)', value: 1.08 }
+            ]
+          },
+          {
+            name: 'North America',
+            data: [
+              { name: 'United States', value: 1.85 },
+              { name: 'Mexico', value: 3.86 },
+              { name: 'Canada', value: 0.88 },
+              { name: 'Guatemala', value: 2.36 },
+              { name: 'Honduras', value: 0.27 },
+              { name: 'El Salvador', value: 1.66 },
+              { name: 'Nicaragua', value: 0.21 },
+              { name: 'Costa Rica', value: 0.92 },
+              { name: 'Panama', value: 0.23 },
+              { name: 'Cuba', value: 2.02 },
+              { name: 'Dominican Republic', value: 1.75 },
+              { name: 'Haiti', value: 1.74 },
+              { name: 'Jamaica', value: 0.25 },
+              { name: 'Trinidad and Tobago', value: 2.88 }
+            ]
+          }
+        ]
+      });
+    }
+    $(document).ready(function () {
+      Chart2();
+    });
+  </script>
+</body>
+</html>

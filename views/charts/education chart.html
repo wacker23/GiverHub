@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Chart</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <!-- Include Highcharts library -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/variwide.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container" style="margin-top:30px">
+    <div >
+      <div class="col-sm-6">
+        <h2>Education Chart</h2>
+        <div id="container"></div>    
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function Chart2() {
+      Highcharts.chart('container', {
+        chart: {
+          type: 'variwide'
+        },
+        title: {
+          text: 'Education Stress Baseline Stress Total Score 2021'
+        },
+        subtitle: {
+          text: 'Source: <a href="http://ec.europa.eu/eurostat/web/' +
+                'labour-market/labour-costs/main-tables">eurostat</a>'
+        },
+        xAxis: {
+          type: 'category'
+        },
+        caption: {
+          text: 'MostEducatedCountriesTertiaryTotal'
+        },
+        legend: {
+          enabled: false
+        },
+        series: [{
+          name: 'Labor Costs',
+          data: [
+            ['Indonesia', 19, 335504],
+            ['Argentina', 19, 277339],
+            ['India', 21, 421611],
+            ['Brazil ', 23, 462057],
+            ['France', 27, 2228857],
+            ['Mexico', 27, 702641],
+            ['Italy ', 28, 215615],
+            ['Colombia ', 31, 3144050],
+            ['Costa Rica', 30, 349344],
+            ['Hungary', 33, 275567],
+            ['Czech Republic', 35, 1672438],
+          ],
+          dataLabels: {
+            enabled: true,
+            format: '%{point.y:.0f}'
+          },
+          tooltip: {
+            pointFormat: 'Labor Costs: <b> {point.y}/h</b><br>' +
+                        'GDP: <b> {point.z} million</b><br>'
+          },
+          borderRadius: 3,
+          colorByPoint: true
+        }]
+      });
+    }
+
+    $(document).ready(function(){
+      Chart2();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GiverHub | Admin</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .nav_top {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav_top .logo img {
+            width: 250px;
+        }
+        .nav_side a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+        .nav_side a:hover {
+            text-decoration: underline;
+        }
+        .donate {
+            padding: 20px;
+        }
+        .donate_container {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        #productList {
+            margin: 20px 0;
+        }
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product-item img {
+            max-width: 100px;
+            height: auto;
+            margin-right: 15px;
+        }
+        #addButton {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- ----------------------------------------NAVBAR----------------------------------------------------->
+    <nav class="nav_top">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+        </div>
+        <div class="nav_side">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="donate.html">DONATE</a>
+            <a href="map.html">MAP</a>
+            <a href="loginup.html">LOG IN/SIGN UP</a>
+        </div>
+    </nav>
+
+    <!-- --------------------------------------------ADMIN PAGE----------------------------------------------------->
+    <div class="contact_container">
+        <div class="donate_container" style="padding-top:100px;">
+            <h1>Admin Page</h1>
+            <button id="addButton" class="btn btn-primary">Add Product</button>
+            <div id="productList"></div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvMQIBK1qnIwFYKKjX9rk-pTpVUYZBUHs",
+            authDomain: "giverhub-99a8d.firebaseapp.com",
+            projectId: "giverhub-99a8d",
+            storageBucket: "giverhub-99a8d.appspot.com",
+            messagingSenderId: "53999996590",
+            appId: "1:53999996590:web:bb9d953d4bb5a3a24fe73f"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Elements
+        const addButton = document.getElementById('addButton');
+        const productList = document.getElementById('productList');
+
+        // Function to display products
+        function displayProducts() {
+            db.collection('shop').get().then((querySnapshot) => {
+                productList.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const productItem = document.createElement('div');
+                    productItem.className = 'product-item';
+                    
+                    // Create product display elements
+                    const productImage = document.createElement('img');
+                    productImage.src = data.imageURL;
+                    const productInfo = document.createElement('div');
+                    productInfo.innerHTML = `<strong>${data.name}</strong><br>Price: ETH${data.price}`;
+
+                    productItem.appendChild(productImage);
+                    productItem.appendChild(productInfo);
+
+                    productItem.onclick = () => {
+                        window.location.href = `edit.html?id=${doc.id}`; // Redirect to edit page
+                    };
+                    
+                    productList.appendChild(productItem);
+                });
+            });
+        }
+
+        // Function to handle Add button click
+        addButton.onclick = () => {
+            window.location.href = 'add.html'; // Redirect to add page
+        };
+
+        // Initial load
+        displayProducts();
+    </script>
+</body>
+</html>

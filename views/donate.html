@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GiverHub | Donate</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.5.2/dist/web3.min.js"></script>
+    <style>
+        /* Custom Styles */
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            color: black; /* Text color for odd rows */
+        }
+
+        #target_acc {
+            color: black; /* Text color for input */
+            width: 400px; /* Width for the target account input field */
+        }
+
+        #amount {
+            color: black; /* Text color for input */
+            width: 200px; /* Reduced width for the amount input field */
+            margin-bottom: 10px; /* Margin for spacing */
+        }
+
+        #send_btn, #connect_metamask_btn {
+            margin-top: 10px; /* Margin for spacing */
+        }
+
+        .input-container {
+            margin-bottom: 10px; /* Margin for spacing */
+        }
+
+        .receipt-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .receipt-container h3 {
+            margin-bottom: 15px;
+        }
+
+        .receipt-container p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav nav_top">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" width="250"></a>
+        </div>
+        <div class="nav_side">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="donate.html">DONATE</a>
+            <a href="map.html">MAP</a>
+            <a href="loginup.html">LOG IN/SIGN UP</a>
+        </div>
+    </nav>
+    <div class="donate">
+        <div class="donate_container">
+            <!-- Receipt Section -->
+            <div id="receipt" class="receipt-container" style="display:none;">
+                <h3>Transaction Receipt</h3>
+                <p><strong>Sender Account:</strong> <span id="sender_account"></span></p>
+                <p><strong>Receiver Account:</strong> <span id="receiver_account"></span></p>
+                <p><strong>Amount Transferred:</strong> <span id="amount_transferred"></span> ETH</p>
+                <p><strong>Sender New Balance:</strong> <span id="sender_balance"></span> ETH</p>
+                <p><strong>Receiver New Balance:</strong> <span id="receiver_balance"></span> ETH</p>
+            </div>
+            <!-- Accounts Table -->
+            <table id="accountsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Balance (ETH)</th>
+                    </tr>
+                </thead>
+                <tbody id="acc_info">
+                    <!-- Accounts will be dynamically inserted here -->
+                </tbody>
+            </table>
+
+            <!-- Input for target account and amount -->
+            <div class="input-container">
+                <label for="target_acc">Your Account:</label>
+                <input type="text" id="target_acc" placeholder="Input your Account" readonly><br>
+            </div>
+            <div class="input-container">
+                Amount: <input type="number" id="amount" step="0.01" min="0"><br>
+            </div>
+            <a href="#" id="send_btn" class="btn btn-info" role="button">Send</a>
+            <a href="#" id="connect_metamask_btn" class="btn btn-warning" role="button">Connect to MetaMask</a>
+
+            
+        </div>
+    </div>
+    <footer>
+        <div class="pages">
+            <a href="index.html"><img class="aimg" src="images/logo.png" width="250"></a>
+            <p>GiverHub cares for needy children by empowering their caregivers to do their best work, with compassion, grace, integrity and excellence. Our end goal is to support children worldwide and see every child reach the potential that God has for them.</p>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+        <div class="doc">
+            <h3>Navigation</h3>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="donate.html">Donate</a>
+            <a href="map.html">Map</a>
+        </div>
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <a href="contact" target="_blank">70 Sunmoon-ro 221beon-gil, Tangjeong-myeon, Asan-si, Chungcheongnam-do</a>
+            <a href="tel: +910000000000">200-000-0000</a>
+            <a href="mailto: ppppppp@gmail.com">giverhub@gmail.com</a>
+        </div>
+        <div class="social">
+            <h3>Support</h3>
+            <p>Help us shape a better future for children all over the world</p>
+            <div class="side_btn">
+                <a href="donate.html">JOIN US TODAY</a>
+            </div>
+        </div>
+        <hr>
+        <p>Copyright &copy; 2024 GiverHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const donationCenter = '0x456984Af5130b36C9CAea3ea91E54ee084228CE3'; // Update this address as needed
+        let web3;
+        let fromAccount;
+
+        // Function to initialize Web3 and get accounts
+        async function initialize() {
+            // Connect to Ganache
+            web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+
+            try {
+                // Fetch accounts from Ganache
+                const accounts = await web3.eth.getAccounts();
+                let result = '';
+
+                for (const account of accounts) {
+                    // Fetch balance for each account
+                    const balance = await web3.eth.getBalance(account);
+                    const balanceInEth = web3.utils.fromWei(balance, 'ether') + " ETH";
+                    result += `<tr onclick="selectAccount('${account}')">
+                                <td>${account}</td>
+                                <td>${balanceInEth}</td>
+                               </tr>`;
+                }
+
+                // Update table with account information
+                document.getElementById('acc_info').innerHTML = result;
+            } catch (e) {
+                alert('Could not retrieve accounts: ' + e);
+            }
+        }
+
+        // Function to select account and populate the input field
+        function selectAccount(account) {
+            document.getElementById('target_acc').value = account;
+            fromAccount = account; // Set the selected account as fromAccount
+        }
+
+        // Function to handle sending the transaction
+async function sendTransaction() {
+    const amount = document.getElementById('amount').value;
+
+    if (!web3.utils.isAddress(fromAccount)) {
+        alert('Please select a valid account.');
+        return;
+    }
+
+    if (!amount || amount <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+    }
+
+    try {
+        const transaction = {
+            from: fromAccount,
+            to: donationCenter,
+            value: web3.utils.toWei(amount, 'ether')
+        };
+
+        // Send the transaction
+        await web3.eth.sendTransaction(transaction);
+
+        // Fetch new balances for sender and receiver
+        const senderBalance = await web3.eth.getBalance(fromAccount);
+        const receiverBalance = await web3.eth.getBalance(donationCenter);
+
+        // Convert balances to ETH
+        const senderBalanceInEth = web3.utils.fromWei(senderBalance, 'ether');
+        const receiverBalanceInEth = web3.utils.fromWei(receiverBalance, 'ether');
+
+        // Display receipt
+        document.getElementById('sender_account').textContent = fromAccount;
+        document.getElementById('receiver_account').textContent = donationCenter;
+        document.getElementById('amount_transferred').textContent = amount;
+        document.getElementById('sender_balance').textContent = senderBalanceInEth;
+        document.getElementById('receiver_balance').textContent = receiverBalanceInEth;
+
+        document.getElementById('receipt').style.display = 'block'; // Show the receipt
+
+        alert('Transaction successful!');
+
+        // Hide receipt after 5 seconds
+        setTimeout(() => {
+            document.getElementById('receipt').style.display = 'none';
+        }, 5000);
+
+        // Optionally reload the page
+        // window.location.reload(); // Reload the page if needed
+    } catch (e) {
+        alert('Transaction failed: ' + e.message);
+    }
+}
+
+
+        // Function to connect to MetaMask
+        async function connectMetaMask() {
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+                try {
+                    await window.ethereum.enable();
+                    const accounts = await web3.eth.getAccounts();
+                    fromAccount = accounts[0];
+                    document.getElementById('target_acc').value = fromAccount; // Set the MetaMask account as fromAccount
+                    alert('MetaMask connected!');
+                } catch (e) {
+                    alert('MetaMask connection failed: ' + e);
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask and try again.');
+            }
+        }
+
+        // Automatically call the initialize function when the page loads
+        window.onload = initialize;
+
+        // Add event listener for the send button
+        document.getElementById('send_btn').addEventListener('click', sendTransaction);
+
+        // Add event listener for the MetaMask connect button
+        document.getElementById('connect_metamask_btn').addEventListener('click', connectMetaMask);
+    </script>
+</body>
+</html>

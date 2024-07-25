@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GiverHub</title>
+
+    <!-- Highcharts lib -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <style>
+            .logout-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100px; /* Adjust as needed */
+            }
+            .logout-btn {
+                display: none; /* Initially hidden */
+                margin-top: 20px;
+                color: black;
+                padding: 10px 20px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                cursor: pointer;
+            }
+            .admin-link {
+                display: none; /* Initially hidden */
+            }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="nav nav_top">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" width="250"></a>
+        </div>
+        <div class="nav_side">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="donate.html">DONATE</a>
+            <a href="map.html">MAP</a>
+            <a href="loginup.html">LOG IN/SIGN UP</a>
+            <a id="admin-link" class="admin-link" href="admin.html">ADMIN OPTION</a> <!-- Admin link -->
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <h2>MAIN</h2>
+        <div class="main_container">   
+            <h1 id="welcome-message">Welcome to the GiverHub<br>A blockchain based Donation Center</h1>
+        </div>
+        <div class="logout-container">
+            <button id="logout-button" class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </div>
+
+    <!-- PRODUCT SECTION -->
+    <div class="product">
+        <h2>CHART</h2>
+        <div class="product_container">
+            <div class="item" onclick="openPage()">
+                <div class="item_img">
+                    <img src="images/pro1.svg">
+                </div>
+                <div class="item_content">
+                    <h3>Pure Food & Water</h3><br>
+                    <img src="images/pro1.svg">
+                    <p>We supply needy children with basic necessities like pure food and water</p>
+                    <input type='button' value='클릭해보세요' style='color: black;'/>
+                    <br><br><br>
+                </div>
+            </div>
+
+            <div class="item" onclick="openPage1()">
+                <div class="item_img">
+                    <img src="images/shop.png">
+                </div>
+                <div class="item_content">
+                    <h3>Health and Medicine</h3><br>
+                    <img src="images/pro2.svg">
+                    <p>Health being the foremost priority, we aim at giving children every medical support</p>
+                    <input type='button' value='클릭해보세요' style='color: black;' />
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="item" onclick="openPage2()">
+                <div class="item_img">
+                    <img src="images/pro3.svg">
+                </div>
+                <div class="item_content">
+                    <h3>Education</h3><br>
+                    <img src="images/pro3.svg">
+                    <p>We provide education facilities to children all over the world</p>
+                    <input type='button' value='클릭해보세요' style='color: black;'/>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- SCRIPT TO OPEN CHART PAGES -->
+    <script>
+        function openPage() {
+            window.open('charts/water chart.html', 'popupWindow', 'width=600,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        function openPage1() {
+            window.open('charts/health chart.html', 'popupWindow', 'width=600,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        function openPage2() {
+            window.open('charts/education chart.html', 'popupWindow', 'width=600,height=600,scrollbars=yes,resizable=yes');
+        }
+    </script> 
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="pages"> 
+            <a href="index.html"><img class="aimg" src="images/logo.png" width="250"></a> 
+            <p>GiverHub cares for needy children by empowering their caregivers to do their best work, with compassion, grace, integrity and excellence. Our end goal is to support children worldwide and see every child reach the potential that God has for them.</p>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+        <div class="doc">
+            <h3>Navigation</h3>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="donate.html">Donate</a>
+            <a href="map.html">Map</a>
+        </div>
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <a href="contact" target="_blank">70 Sunmoon-ro 221beon-gil, Tangjeong-myeon, Asan-si, Chungcheongnam-do</a>
+            <a href="tel: +910000000000">200-000-0000</a>
+            <a href="mailto: ppppppp@gmail.com">giverhub@gmail.com</a>
+        </div>
+        <div class="social">
+            <h3>Support</h3>
+            <p>Help us shape a better future for children all over the world</p>
+            <div class="side_btn">
+                <a href="donate.html">JOIN US TODAY</a>
+            </div>
+        </div>
+        <hr>
+        <p>Copyright &copy; 2024 GiverHub. All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // Retrieve the stored email from localStorage
+        var email = localStorage.getItem('email');
+        var welcomeMessage = document.getElementById('welcome-message');
+        var logoutButton = document.getElementById('logout-button');
+        var adminLink = document.getElementById('admin-link');
+
+        if (email) {
+            // Update the welcome message with the user's email
+            welcomeMessage.innerHTML = `Welcome to the GiverHub, ${email}<br>A blockchain based Donation Center`;
+            // Show the logout button
+            logoutButton.style.display = 'block';
+            
+            // Check if the user is an admin
+            if (email === 'admin@gmail.com') {
+                adminLink.style.display = 'block'; // Show the admin link
+            }
+        } else {
+            // Hide the logout button and admin link if not logged in
+            logoutButton.style.display = 'none';
+            adminLink.style.display = 'none';
+        }
+
+        function logout() {
+            // Remove the email from localStorage
+            localStorage.removeItem('email');
+            // Redirect to the login page or refresh the page
+            window.location.href = 'loginup.html';
+        }
+    </script>
+</body>
+</html>

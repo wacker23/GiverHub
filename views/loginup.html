@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GiverHub | Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <style>
+        .register .side_btn {
+            margin-top: 20px; /* Adjust this value as needed */
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="nav nav_top">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" width="250"></a>
+        </div>
+        <div class="nav_side">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="donate.html">DONATE</a>
+            <a href="map.html">MAP</a>
+            <a href="loginup.html">LOG IN/SIGN UP</a>
+        </div>
+    </nav>
+
+    <!-- SIGN UP FORM -->
+    <div class="register">
+        <div class="register_container">
+            <div class="login_btn">
+                <button type="submit" onclick="location.href='/login.html'">Login</button>
+            </div>
+            <div class="register_btn">
+                <button type="button" onclick="location.href='/loginup.html'">Sign up</button>
+            </div>
+            <h1>Register</h1>
+            <form id="register-form">
+                <div class="register_text">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+                </div>
+                <div class="register_text">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                </div>
+                <div class="register_text">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                </div>
+                <div class="side_btn">
+                    <button type="button" onclick="register()" style='color: black;'>Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="pages"> 
+            <a href="index.html"><img class="aimg" src="images/logo.png" width="250"></a> 
+            <p>GiverHub cares for needy children by empowering their caregivers to do their best work, with compassion, grace, integrity and excellence.</p>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+        <div class="doc">
+            <h3>Navigation</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="donate.html">Donate</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <a href="contact" target="_blank">70 Sunmoon-ro 221beon-gil, Tangjeong-myeon, Asan-si, Chungcheongnam-do</a>
+            <a href="tel: +910000000000">200-000-0000</a>
+            <a href="mailto: ppppppp@gmail.com">giverhub@gmail.com</a>
+        </div>
+        <div class="social">
+            <h3>Support</h3>
+            <p>Help us shape a better future for children all over the world</p>
+            <div class="side_btn">
+            </div>
+        </div>
+        <hr>
+        <p>Copyright &copy; 2024 GiverHub. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <!-- Firebase Configuration and Script -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvMQIBK1qnIwFYKKjX9rk-pTpVUYZBUHs",
+            authDomain: "giverhub-99a8d.firebaseapp.com",
+            projectId: "giverhub-99a8d",
+            storageBucket: "giverhub-99a8d.appspot.com",
+            messagingSenderId: "53999996590",
+            appId: "1:53999996590:web:bb9d953d4bb5a3a24fe73f"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function register() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var name = document.getElementById('name').value;
+
+            if (password.length < 8) {
+                alert('Password should be at least 8 characters long.');
+                return;
+            }
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Registration successful
+                    var user = userCredential.user;
+                    alert('Welcome ' + name + ', registration successful!');
+                    // Optionally, you can redirect the user or clear the form here
+                    // window.location.href = 'somepage.html';
+                    // document.getElementById('register-form').reset();
+                })
+                .catch((error) => {
+                    // Handle errors here
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert('Error: ' + errorMessage);
+                });
+        }
+    </script>
+</body>
+</html>

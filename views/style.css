@@ -1,0 +1,1088 @@
+body
+{
+    background-color: black;
+}
+/*------------------------------------------------NAVBAR----------------------------------------*/
+.nav
+{
+    background-color: rgba(0, 0, 0, 0.856);
+    z-index: 9;
+    padding-left: 50px;
+    padding-right: 50px;
+    display:flex;
+    box-shadow: 0px 3px 65px 0px rgba(0, 0, 0, 0.856);
+}
+.nav_top
+{
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+}
+.logo
+{
+    float:left;
+    width: 50%;
+}
+.logo img
+{
+    padding: 8px;
+    width:30%;
+    margin-left:10%;
+}
+.nav_side
+{
+    float:right;
+    width:45%;
+    margin-top: 20px;
+}
+.nav_side a
+{
+    text-decoration: none;
+    margin-right: 10px;
+    margin-left:50px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-left: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
+}
+.nav_side a:hover
+{
+    color: rgb(79, 255, 88);
+    transition: all 1s ease;
+}
+
+/*------------------------------------------------MAIN----------------------------------------*/
+.main
+{
+   
+    background-image: url("images/back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+    height: 100vh;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
+.main h2
+{
+    color: white;
+    font-size: 350%;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    text-align: left;
+}
+ /* 3개영역 제어 */
+.main .main_container
+{
+    display:flex;
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    /* padding-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width:40%; */
+}
+/* 3개영역 모양틀  */
+.main .main_container .item
+{
+    width:50%;
+    margin: 50px;
+    height: 100%;
+    background-color: black;
+    opacity: 80%;
+    border-radius: 50%;
+}
+.main .main_container .item:hover
+{
+    box-shadow:0px 3px 65px 0px rgb(255, 189, 165);
+}
+.main .main_container .item .item_img
+{
+    width:50%;
+    height: 1%;
+    overflow:hidden;
+    margin-left: 23%;
+}
+.main .main_container .item .item_img img
+{
+    width:100%;
+    height: 10%;
+}
+.main .main_container .item .item_content
+{
+    text-align: center;
+}
+.main .main_container .item .item_content h3
+{
+    font-size: 25px;
+    line-height: 2px;
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+}
+.main .main_container .item .item_content p
+{
+    font-size: 20px;
+    line-height: 25px;
+    width: 80%;
+    text-align: center;
+    padding-left: 20%;
+}
+/* Basic styles for modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* --------------- */
+
+
+
+/*------------------------------------------------SIDE----------------------------------------*/
+/* .side 
+{
+    background-color: rgba(0, 0, 0, 0.966);
+    display: flex;
+    text-align: center;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.side .left
+{
+    width:50%;
+    float: left;
+}
+.side .left img
+{
+    float: left;
+    width:100%;
+}
+.side .right
+{
+    background-color: rgba(0, 0, 0, 0.966);
+    width:50%;
+    float:right;
+}
+.side .right h2
+{
+    margin-top: 8%;
+    font-size: 250%;
+}
+.side .right p
+{
+    margin-left: 15%;
+    width: 70%;
+    font-size: 147%;
+    margin-top: 6%;
+}
+.side .right .side_btn
+{
+    margin-top:4%;
+}
+.side .right .side_btn a
+{
+    text-decoration: none;
+    font-size: large;
+    margin:32%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    border: 4px double whitesmoke;
+    transition: 0.5s;
+}
+.side .right .side_btn a:hover
+{
+    background-color: rgb(79, 255, 88);
+    color: black;
+    font-weight:bolder;
+    border: none;
+    border: 4px solid green;
+    transition:0.5s;
+} */
+
+/*--------------------------------------------HOW WE HELP----------------------------------------*/
+/* 2번째 영역 */
+.product
+{
+   
+    background-image: url("images/poor.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+    height: 100vh;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
+.product h2
+{
+    color: white;
+    font-size: 350%;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    text-align: left;
+}
+ /* 3개영역 제어 */
+.product .product_container
+{
+    display:flex;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    /* padding-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width:40%; */
+}
+/* 3개영역 모양틀  */
+.product .product_container .item
+{
+    /* width:100%;
+    margin: 10px;
+    height: 10%;
+    background-color: black;
+    opacity: 80%;
+    border-radius: 50%; */
+}
+.product .product_container .item:hover
+{
+    box-shadow:0px 3px 65px 0px rgb(255, 189, 165);
+}
+.product .product_container .item .item_img
+{
+    width:50%;
+    height: 1%;
+    overflow:hidden;
+    margin-left: 23%;
+}
+.product .product_container .item .item_img img
+{
+    width:100%;
+    height: 10%;
+}
+.product .product_container .item .item_content
+{
+    text-align: center;
+}
+.product .product_container .item .item_content h3
+{
+    font-size: 25px;
+    line-height: 2px;
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+}
+.product .product_container .item .item_content p
+{
+    font-size: 20px;
+    line-height: 25px;
+    width: 80%;
+    text-align: center;
+    padding-left: 20%;
+}
+/* Basic styles for modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*--------------------------------------------FOOTER----------------------------------------*/
+footer
+{
+    background-color: black;
+    padding:50px;
+    display: inline-block;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+footer .aimg
+{
+    margin-top:21%;
+}
+footer .pages
+{
+    width:25%;
+    text-align: center;
+    display: inline-block;
+}
+
+footer .pages p
+{
+    padding-top: 5%;
+    text-align: left;
+    color:rgba(255, 226, 243, 0.808);
+    width:90%;
+    padding-left:12%;
+}
+footer .pages a
+{
+    text-decoration: none;
+    margin:10px;
+    color: rgba(255, 226, 243, 0.808);
+    font-size: 30px;
+}
+footer .pages a:hover
+{
+    color:white;
+}
+footer .doc
+{
+    width:25%;
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 5%;
+}
+footer .doc h3
+{
+    color: rgb(255, 226, 243);
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bold;
+    line-height: 130px;
+}
+footer .doc a
+{
+    display: block;
+    text-decoration: none;
+    margin:10px;
+    color: rgba(255, 226, 243, 0.808);
+    font-size: 25px;
+}
+footer .doc a:hover
+{
+    color:white;
+}
+footer .social
+{
+    width:25%;
+    text-align: center;
+    display: inline-block;
+}
+footer .social h3
+{
+    color: rgb(255, 226, 243);
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bold;
+    line-height: 130px;
+}
+footer .contact
+{
+    width:20%;
+    text-align: center;
+    text-align: left;
+}
+footer .contact h3
+{
+    color: rgb(255, 226, 243);
+    font-size: 30px;
+    padding: 5px;
+    font-weight: bold;
+    line-height: 130px;
+}
+footer .social p
+{
+    padding-top: 5%;
+    text-align: left;
+    color:rgba(255, 226, 243, 0.808);
+    width:90%;
+    padding-left:12%;
+    font-size: large;
+    margin-bottom: 18%;
+}
+.side .right .side_btn
+{
+    margin-top:4%;
+}
+footer .side_btn a
+{
+    text-decoration: none;
+    font-size: 100%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+}
+footer .side_btn a:hover
+{
+    background-color: rgb(79, 255, 88);
+    color: black;
+    font-weight:bolder;
+    border: none;
+    border: 4px solid green;
+    transition:0.5s;
+}
+footer .contact
+{
+    display: inline-block;
+}
+footer .contact a
+{
+    display: block;
+    font-size: 20px;
+    line-height: 38px;
+    text-decoration: none;;
+    color:rgba(247, 193, 224, 0.904);
+    margin:10px;
+}
+footer .contact a:hover
+{
+    color:white;
+}
+footer p
+{
+    color:rgba(247, 178, 217, 0.726);
+    text-align: center;
+    font-size: 110%;
+}
+/*------------------------------------------------MAIN_ABOUT----------------------------------------*/
+.main_about
+{
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/about.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 80vh;
+    margin-top:-1.5%;
+}
+.main_about .main_content_about h2
+{
+    color: white;
+    font-size: 390%;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    padding:20%;
+}
+.product_about
+{
+    float:left;
+    background-image: url("images/about_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+    height: 100vh;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
+/*--------------------------------------------DONATE----------------------------------------*/
+.donate
+{
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/donate_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top:-1.5%;
+    color: white;
+    text-align: center;
+}
+.donate .donate_container
+{
+    background-color: black;
+    opacity:80%;
+    text-align: center;
+    margin: 0% 20% 0% 20%;
+    padding-top:10%;
+    padding-bottom: 10%;
+}
+.donate .donate_container h1
+{
+    color: rgb(79, 255, 88);
+    line-height: 100px;
+}
+.donate .donate_container p
+{
+    font-size: large;
+    width:80%;
+    text-align: center;
+    padding-left:20%;
+}
+.donate .donate_container .second
+{
+    padding-bottom: 10%;
+}
+.donate .side_btn a
+{
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+}
+.donate .side_btn a:hover
+{
+    background-color: white;
+    color: black;
+    font-weight:bolder;
+    border: none;
+    border: 4px solid green;
+    transition:0.5s;
+}
+/*--------------------------------------------CONTACT---------------------------------------*/
+.contact_container
+{
+    padding: 100px;
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/about_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 180vh;
+    margin-top:-1.5%;
+    color: white;
+}
+.contact_container h2
+{
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 33px;
+    text-align: center;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.contact_container .g_map
+{
+    border:10px solid white;
+}
+.contact_container .contact_content
+{
+    padding:20px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.contact_container .contact_content p
+{
+    padding:15px;
+    font-size: 20px;
+    line-height: 25px;
+}
+/* ---------------------------------SHOP.css--------------------------------- */
+
+.shop {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/donate_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: -1.5%;
+    color: white;
+    text-align: center;
+}
+
+.shop .shop_container {
+    background-color: black;
+    opacity: 80%;
+    text-align: center;
+    margin: 0% 20% 0% 20%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.shop .shop_container h1 {
+    color: rgb(79, 255, 88);
+    line-height: 100px;
+}
+
+.shop .shop_container p {
+    font-size: large;
+    width: 80%;
+    text-align: center;
+    padding-left: 20%;
+}
+
+.shop .shop_container .second {
+    padding-bottom: 10%;
+}
+
+.shop .side_btn a {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    margin-top: 100px;
+}
+
+.shop .side_btn a:hover {
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+    border: none;
+    border: 4px solid green;
+    transition: 0.5s;
+}
+
+/*--------------------------------------------LOGIN---------------------------------------*/
+.login {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/donate_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: -1.5%;
+    color: white;
+    text-align: center;
+}
+
+.login .login_container {
+    background-color: rgba(0, 0, 0, 0.8); /* 검정색, 투명도 80% */
+    text-align: center;
+    margin: 0% 20%;
+    padding-top: 10%;
+    padding-bottom: 400px;
+}
+
+.login .login_container h1 {
+    color: rgb(79, 255, 88);
+    line-height: 100px;
+}
+
+.login .login_container .login_btn,
+.login .login_container .register_btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.login .login_container .login_btn button{
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: rgb(80, 216, 240);
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double rgb(80, 216, 240);
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.login .login_container .register_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.login .login_container .log_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.login .login_container .log_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+.login .login_container .register_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+
+.login .login_container .login_text {
+    margin-top: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    width: 100%;
+}
+
+.login .login_container .login_text label,
+.login .login_container .login_text input {
+    display: block;
+    margin: 0 auto; /* 레이블과 입력 필드를 중앙에 배치 */
+    text-align: center;
+    width: 20%; /* 입력 필드의 가로 크기 조정 */
+}
+
+/*--------------------------------------------Register---------------------------------------*/
+.register {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/donate_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: -1.5%;
+    color: white;
+    text-align: center;
+}
+
+.register .register_container {
+    background-color: rgba(0, 0, 0, 0.8); /* 검정색, 투명도 80% */
+    text-align: center;
+    margin: 0% 20%;
+    padding-top: 10%;
+    padding-bottom: 400px;
+}
+
+.register .register_container h1 {
+    color: rgb(79, 255, 88);
+    line-height: 100px;
+}
+
+.register .register_container .login_btn,
+.register .register_container .register_btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.register .register_container .login_btn button{
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.register .register_container .register_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: rgb(80, 216, 240);
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double rgb(80, 216, 240);
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.register .register_container .login_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+.register .register_container .register_text {
+    margin-top: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    width: 100%;
+}
+
+.register .register_container .register_text label,
+.register .register_container .register_text input {
+    display: block;
+    margin: 0 auto; /* 레이블과 입력 필드를 중앙에 배치 */
+    text-align: center;
+    width: 20%; /* 입력 필드의 가로 크기 조정 */
+}
+
+.register .register_container .next_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.register .register_container .next_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+/*--------------------------------------------Register2---------------------------------------*/
+.register2 {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-image: url("images/donate_back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: -1.5%;
+    color: white;
+    text-align: center;
+}
+
+.register2 .register2_container {
+    background-color: rgba(0, 0, 0, 0.8); /* 검정색, 투명도 80% */
+    text-align: center;
+    margin: 0% 20%;
+    padding-top: 10%;
+    padding-bottom: 400px;
+}
+
+.register2 .register2_container h1 {
+    color: rgb(79, 255, 88);
+    line-height: 100px;
+}
+
+.register2 .register2_container .login_btn,
+.register2 .register2_container .register_btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.register2 .register2_container .login_btn button{
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.register2 .register2_container .register_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: rgb(80, 216, 240);
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double rgb(80, 216, 240);
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.register2 .register2_container .login_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+.register2 .register2_container .register_text {
+    margin-top: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    width: 100%;
+}
+
+.register2 .register2_container .register_text label,
+.register2 .register2_container .register_text input {
+    display: block;
+    margin: 0 auto; /* 레이블과 입력 필드를 중앙에 배치 */
+    text-align: center;
+    width: 20%; /* 입력 필드의 가로 크기 조정 */
+}
+
+.register2 .register2_container .reg_btn button,
+.register2 .register2_container .next_btn button {
+    text-decoration: none;
+    font-size: 120%;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+    border: 2px double whitesmoke;
+    transition: 0.5s;
+    background: none;
+    width: 105px;
+    height: 40px;
+    line-height: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.register2 .register2_container .reg_btn button:hover,
+.register2 .register2_container .next_btn button:hover {
+    color: rgb(79, 255, 88);
+    font-weight: bolder;
+    border: 2px solid green;
+    padding: 10px 20px;
+    transition: all 1s ease;
+}
+
+/*--------------------------------------------CENTER--------------------------------------*/
+.centercon{
+
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+padding-bottom: 50px;
+height: 100vh;
+font-family: 'Trebuchet MS', sans-serif;
+
+}
+
+
+/*--------------------------------------------CATERING---------------------------------------*/
+.receipt-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black; /* Set text color to black */
+}
+.receipt-container h3 {
+    margin-bottom: 15px;
+}
+.receipt-container p {
+    margin: 5px 0;
+}
+
+

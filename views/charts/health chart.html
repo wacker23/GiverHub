@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDP-PPP per Capita Chart</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 600px; /* Ensure container has a height */
+    }
+  </style>
+  <!-- Include Highcharts library -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container" style="margin-top:30px">
+    <div>
+      <div class="col-sm-6">
+        <h2>GDP-PPP per Capita by Country</h2>
+        <div id="container"></div>    
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function renderChart() {
+      Highcharts.chart('container', {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'GDP-PPP per Capita by Country'
+        },
+        subtitle: {
+          text: 'Source: Provided Data'
+        },
+        xAxis: {
+          type: 'category',
+          title: {
+            text: 'Country'
+          },
+          labels: {
+            rotation: -45,
+            align: 'right'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'GDP-PPP per Capita ($)'
+          },
+          labels: {
+            format: '${value}'
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        series: [{
+          name: 'GDP-PPP per Capita',
+          data: [
+            ['Burundi', 916],
+            ['Central African Republic', 1123],
+            ['Democratic Republic of the Congo', 1552],
+            ['Mozambique', 1649],
+            ['Niger', 1675],
+            ['Malawi', 1712],
+            ['Liberia', 1882],
+            ['Madagascar', 1979],
+            ['Yemen', 1996]
+          ],
+          dataLabels: {
+            enabled: true,
+            format: '${point.y}'
+          }
+        }]
+      });
+    }
+
+    $(document).ready(function(){
+      renderChart();
+    });
+  </script>
+</body>
+</html>

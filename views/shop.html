@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GiverHub | Shop</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <style>
+        .shop-table {
+            padding: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column layout */
+            gap: 20px;
+        }
+
+        .product-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            background: #fff;
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-item .name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-item .price {
+            color: #888;
+        }
+
+        .total-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .total-container p {
+            font-size: 20px;
+        }
+
+        .buy-button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ----------------------------------------NAVBAR----------------------------------------------------->
+    <nav class="nav nav_top">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" width="250"></a>
+        </div>
+        <div class="nav_side">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="donate.html">DONATE</a>
+            <a href="map.html">MAP</a>
+            <a href="loginup.html">LOG IN/SIGN UP</a>
+        </div>
+    </nav>
+
+    <!-- --------------------------------------------SHOP TABLE----------------------------------------------------->
+    <div class="shop-table">
+        <h1>Our Products</h1>
+        <div id="product-grid" class="container grid-container"></div>
+        <div class="total-container">
+            <p>Total: <span id="total-price">0</span> ETH</p>
+            <button class="btn btn-primary buy-button" onclick="proceedToCheckout()">Buy</button>
+        </div>
+    </div>
+
+    <!-- --------------------------------------------FOOTER-------------------------------------------------------->
+    <footer>
+        <div class="pages"> 
+            <a href="index.html"><img class="aimg" src="images/logo.png" width="250"></a> 
+            <p>GiverHub cares for needy children by empowering their caregivers to do their best work, with compassion, grace, integrity and excellence. Our end goal is to support children worldwide and see every child reach the potential that God has for them.</p>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+        <div class="doc">
+            <h3>Navigation</h3>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="donate.html">Donate</a>
+            <a href="map.html">Map</a>
+        </div>
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <a href="contact" target="_blank">4486 Richards Avenue, Modesto CA - 95354</a>
+            <a href="tel: +910000000000">200-000-0000</a>
+            <a href="mailto: ppppppp@gmail.com">giverhub@gmail.com</a>
+        </div>
+        <div class="social">
+            <h3>Support</h3>
+            <p>Help us shape a better future for children all over the world</p>
+            <div class="side_btn">
+                <a href="donate.html">JOIN US TODAY</a>
+            </div>
+        </div>
+        <hr>
+        <p>Copyright &copy; 2024 GiverHub. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvMQIBK1qnIwFYKKjX9rk-pTpVUYZBUHs",
+            authDomain: "giverhub-99a8d.firebaseapp.com",
+            projectId: "giverhub-99a8d",
+            storageBucket: "giverhub-99a8d.appspot.com",
+            messagingSenderId: "53999996590",
+            appId: "1:53999996590:web:bb9d953d4bb5a3a24fe73f"
+        };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const productGrid = document.getElementById('product-grid');
+            let totalPrice = 0;
+    
+            db.collection('shop').get().then((querySnapshot) => {
+                let products = [];
+                querySnapshot.forEach((doc) => {
+                    products.push(doc.data());
+                });
+    
+                if (products.length === 0) {
+                    productGrid.innerHTML = '<p>No products available.</p>';
+                    return;
+                }
+    
+                let html = '';
+                products.forEach((product, index) => {
+                    if (!product.imageURL || !product.name || !product.price) {
+                        console.warn("Product missing fields:", product);
+                        return;
+                    }
+    
+                    html += `
+                        <div class="product-item">
+                            <input type="checkbox" id="product-${index}" data-price="${product.price}" onchange="updateTotalPrice()" />
+                            <label for="product-${index}">
+                                <img src="${product.imageURL}" alt="${product.name}" onerror="this.src='default-image.jpg';">
+                                <div class="name">${product.name}</div>
+                                <div class="price">${product.price} ETH</div>
+                            </label>
+                        </div>
+                    `;
+                });
+    
+                productGrid.innerHTML = html;
+            }).catch((error) => {
+                console.error("Error fetching documents: ", error);
+            });
+        });
+    
+        function updateTotalPrice() {
+            const checkboxes = document.querySelectorAll('.product-item input[type="checkbox"]');
+            let total = 0;
+    
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.getAttribute('data-price'));
+                }
+            });
+    
+            document.getElementById('total-price').innerText = total.toFixed(2);
+        }
+    
+        function proceedToCheckout() {
+            const total = document.getElementById('total-price').innerText;
+            window.location.href = `pay.html?total=${total}`;
+        }
+    </script>
+    
+</body>
+</html>
