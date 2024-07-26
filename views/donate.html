@@ -218,9 +218,10 @@ async function sendTransaction() {
 
         alert('Transaction successful!');
 
-        // Hide receipt after 5 seconds
+        // Reload the page after 5 seconds
         setTimeout(() => {
             document.getElementById('receipt').style.display = 'none';
+            window.location.reload(); // Reload the page after showing the receipt
         }, 5000);
 
         // Optionally reload the page
